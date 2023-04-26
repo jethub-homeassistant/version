@@ -54,8 +54,8 @@
   "multicast": "2022.02.dev2303",
   "observer": "2023.04.dev1801",
   "image": {
-    "core": "ghcr.io/jethubjhaos/{machine}-homeassistant",
-    "supervisor": "ghcr.io/jethubjhaos/{arch}-hassio-supervisor",
+    "core": "ghcr.io/jethub-homeassistant/{machine}-homeassistant",
+    "supervisor": "ghcr.io/jethub-homeassistant/{arch}-hassio-supervisor",
     "cli": "ghcr.io/home-assistant/{arch}-hassio-cli",
     "audio": "ghcr.io/home-assistant/{arch}-hassio-audio",
     "dns": "ghcr.io/home-assistant/{arch}-hassio-dns",
@@ -63,8 +63,8 @@
     "multicast": "ghcr.io/home-assistant/{arch}-hassio-multicast"
   },
   "images": {
-    "core": "ghcr.io/home-assistant/{machine}-homeassistant",
-    "supervisor": "ghcr.io/jethubjhaos/{arch}-hassio-supervisor",
+    "core": "ghcr.io/jethub-homeassistant/{machine}-homeassistant",
+    "supervisor": "ghcr.io/jethub-homeassistant/{arch}-hassio-supervisor",
     "cli": "ghcr.io/home-assistant/{arch}-hassio-cli",
     "audio": "ghcr.io/home-assistant/{arch}-hassio-audio",
     "dns": "ghcr.io/home-assistant/{arch}-hassio-dns",
