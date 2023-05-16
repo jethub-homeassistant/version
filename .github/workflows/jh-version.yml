@@ -83,8 +83,8 @@ jobs:
       - name: Install SSH key for storage
         uses: shimataro/ssh-key-action@v2
         with:
-          key: ${{ secrets.SSHKEY }}
-          known_hosts: ${{ secrets.SSHKNOWNHOSTS }}
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWNHOSTS_UPLOAD }}
           if_key_exists: replace
 
       - name: Login to GitHub Container Registry
@@ -128,8 +128,8 @@ jobs:
       - name: Upload signature
         if: steps.check.outputs.sign == 'yes'
         run: |
-          ssh-keyscan update.jethome.ru >"${HOME}/.ssh/known_hosts"
-          rsync "${{ matrix.path }}.sig" repo@update.jethome.ru:/var/www/haversion.jethome.ru/
+          #ssh-keyscan update.jethome.ru >"${HOME}/.ssh/known_hosts"
+          rsync "${{ matrix.path }}.sig" repo@repo.jethome.ru:/var/www/haversion.jethome.ru/
 
 
   upload:
@@ -144,8 +144,8 @@ jobs:
     - name: Install SSH key for storage
       uses: shimataro/ssh-key-action@v2
       with:
-        key: ${{ secrets.SSHKEY }}
-        known_hosts: ${{ secrets.SSHKNOWNHOSTS }}
+        key: ${{ secrets.SSH_KEY }}
+        known_hosts: ${{ secrets.SSH_KNOWNHOSTS_UPLOAD }}
         if_key_exists: replace
 
     - name: Setup Python version ${{ env.PYTHON_VERSION }}
@@ -157,8 +157,8 @@ jobs:
       run: |
         for file in ${{ needs.prepare.outputs.files }}; do
           if [[ "$file" =~ \.txt|\.json|\.png ]]; then
-            ssh-keyscan update.jethome.ru >"${HOME}/.ssh/known_hosts"
-            rsync "$file" repo@update.jethome.ru:/var/www/haversion.jethome.ru/
+            #ssh-keyscan update.jethome.ru >"${HOME}/.ssh/known_hosts"
+            rsync "$file" repo@repo.jethome.ru:/var/www/haversion.jethome.ru/
           fi
         done
 
