@@ -135,7 +135,7 @@ jobs:
   upload:
     name: Upload
     needs: ["signing", "prepare"]
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    if: needs.prepare.outputs.files != null && github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout the repository
@@ -153,6 +153,40 @@ jobs:
       with:
         python-version: ${{ env.PYTHON_VERSION }}
 
+    - name: Check diff
+      id: checkdiff
+      run: |
+        MESSAGE="Upload new versions: "
+        MESSAGESEND=false
+        for file in ${{ needs.prepare.outputs.files }}; do
+          if [[ "$file" =~ \.json ]]; then
+
+            #ssh-keyscan update.jethome.ru >"${HOME}/.ssh/known_hosts"
+            rsync "$file" repo@repo.jethome.ru:/var/www/haversion.jethome.ru/
+
+            JSON2=${FILE}
+            JSON=$(mktemp).json
+            rsync repo@repo.jethome.ru:/var/www/haversion.jethome.ru/"$file" ${JSON}
+
+            OUTPUT=$(mktemp).json
+            OUTPUT2=$(mktemp).json
+
+            cat ${JSON} | jq "{supervisor,cli,dns,audio,multicast,observer}" | jq .core+="$(jq .homeassistant[\"jethub-d1\"] ${JSON2})" | jq .hassos+="$(jq .hassos[\"jethub-d1\"] ${JSON2})"> ${OUTPUT}
+            cat ${JSON2} | jq "{supervisor,cli,dns,audio,multicast,observer}" | jq .core+="$(jq .homeassistant[\"jethub-d1\"] ${JSON2})" | jq .hassos+="$(jq .hassos[\"jethub-d1\"] ${JSON2})"> ${OUTPUT2}
+
+            DIFF=$(diff -y --suppress-common-lines  ${OUTPUT} ${OUTPUT2} | cut -d '|' -f 2 | xargs | sed 's/,$//g' | sed 's/\"//g')
+            if [[ -n "${DIFF}" ]]; then
+
+              echo "file${file}=${DIFF}" >> $GITHUB_OUTPUT
+              MESSAGE="${MESSAGE}\n${DIFF}"
+              MESSAGESEND=true
+            fi
+            rm -f ${JSON} ${OUTPUT} ${OUTPUT2}
+          fi
+        done
+        if [[ "$MESSAGESEND" == "true" ]]; then
+          echo "message=${MESSAGE}" >> $GITHUB_OUTPUT
+        fi
     - name: Upload files
       run: |
         for file in ${{ needs.prepare.outputs.files }}; do
@@ -162,3 +196,11 @@ jobs:
           fi
         done
 
+    - name: Notify
+      if: ${{ steps.checkdiff.outputs.message != null }}
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          ${{ steps.checkdiff.outputs.message }}
