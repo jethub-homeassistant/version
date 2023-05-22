@@ -160,18 +160,14 @@ jobs:
         MESSAGESEND=false
         for file in ${{ needs.prepare.outputs.files }}; do
           if [[ "$file" =~ \.json ]]; then
-
-            #ssh-keyscan update.jethome.ru >"${HOME}/.ssh/known_hosts"
-            rsync "$file" repo@repo.jethome.ru:/var/www/haversion.jethome.ru/
-
-            JSON2=${FILE}
+            JSON2=${file}
             JSON=$(mktemp).json
             rsync repo@repo.jethome.ru:/var/www/haversion.jethome.ru/"$file" ${JSON}
 
             OUTPUT=$(mktemp).json
             OUTPUT2=$(mktemp).json
 
-            cat ${JSON} | jq "{supervisor,cli,dns,audio,multicast,observer}" | jq .core+="$(jq .homeassistant[\"jethub-d1\"] ${JSON2})" | jq .hassos+="$(jq .hassos[\"jethub-d1\"] ${JSON2})"> ${OUTPUT}
+            cat ${JSON} | jq "{supervisor,cli,dns,audio,multicast,observer}" | jq .core+="$(jq .homeassistant[\"jethub-d1\"] ${JSON})" | jq .hassos+="$(jq .hassos[\"jethub-d1\"] ${JSON})"> ${OUTPUT}
             cat ${JSON2} | jq "{supervisor,cli,dns,audio,multicast,observer}" | jq .core+="$(jq .homeassistant[\"jethub-d1\"] ${JSON2})" | jq .hassos+="$(jq .hassos[\"jethub-d1\"] ${JSON2})"> ${OUTPUT2}
 
             DIFF=$(diff -y --suppress-common-lines  ${OUTPUT} ${OUTPUT2} | cut -d '|' -f 2 | xargs | sed 's/,$//g' | sed 's/\"//g')
@@ -187,6 +183,7 @@ jobs:
         if [[ "$MESSAGESEND" == "true" ]]; then
           echo "message=${MESSAGE}" >> $GITHUB_OUTPUT
         fi
+
     - name: Upload files
       run: |
         for file in ${{ needs.prepare.outputs.files }}; do
