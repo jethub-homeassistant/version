@@ -181,7 +181,9 @@ jobs:
           fi
         done
         if [[ "$MESSAGESEND" == "true" ]]; then
-          echo "message=${MESSAGE}" >> $GITHUB_OUTPUT
+          echo "message=<<EOF" >> $GITHUB_OUTPUT
+          echo "${MESSAGE}" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
         fi
 
     - name: Upload files
