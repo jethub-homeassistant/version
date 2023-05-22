@@ -174,7 +174,7 @@ jobs:
             if [[ -n "${DIFF}" ]]; then
 
               echo "file${file}=${DIFF}" >> $GITHUB_OUTPUT
-              MESSAGE="${MESSAGE}\n${DIFF}"
+              MESSAGE="${MESSAGE}"$'\n'"${DIFF}"
               MESSAGESEND=true
             fi
             rm -f ${JSON} ${OUTPUT} ${OUTPUT2}
