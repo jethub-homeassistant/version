@@ -10,6 +10,7 @@
     "jethub-d1": "2023.6.0.dev20230524",
     "jethub-d1p": "2023.6.0.dev20230524",
     "jethub-h1": "2023.6.0.dev20230524",
+    "jethub-h2": "2023.6.0.dev20230524",
     "generic-x86-64": "2023.6.0.dev20230524",
     "intel-nuc": "2023.6.0.dev20230524",
     "khadas-vim3": "2023.6.0.dev20230524",
@@ -47,6 +48,7 @@
     "jethub-d1": "11.0.dev20230525",
     "jethub-d1p": "11.0.dev20230525",
     "jethub-h1": "11.0.dev20230525",
+    "jethub-h2": "11.0.dev20230525",
     "khadas-vim3": "11.0.dev20230525"
   },
   "ota": "https://os-builds.jhaos.dev/{version}/{os_name}_{board}-{version}.raucb",
