@@ -21,6 +21,7 @@
     "raspberrypi4": "2023.9.2",
     "raspberrypi4-64": "2023.9.2",
     "yellow": "2023.9.2",
+    "green": "2023.9.2",
     "tinker": "2023.9.2",
     "odroid-c2": "2023.9.2",
     "odroid-c4": "2023.9.2",
@@ -36,6 +37,7 @@
     "rpi4": "10.5",
     "rpi4-64": "10.5",
     "yellow": "10.5",
+    "green": "10.5",
     "tinker": "10.5",
     "jethub-d1": "10.5",
     "jethub-d1p": "10.5",
@@ -48,7 +50,6 @@
     "odroid-xu4": "10.5",
     "generic-x86-64": "10.5",
     "generic-aarch64": "10.5",
-    "intel-nuc": "10.5",
     "khadas-vim3": "10.5"
   },
   "hassos-upgrade": {
