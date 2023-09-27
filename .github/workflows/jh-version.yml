@@ -112,13 +112,6 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Sign CAS
-        if: steps.check.outputs.sign == 'yes'
-        uses: jethub-homeassistant/actions/helpers/codenotary@master-jethub
-        with:
-          source: ${{ matrix.path }}
-          token: ${{ secrets.CAS_TOKEN }}
-
       - name: Upload file
         if: steps.check.outputs.sign == 'yes'
         run: |
