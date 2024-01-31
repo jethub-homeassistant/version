@@ -40,7 +40,7 @@ jobs:
       files: ${{ steps.changed_files.outputs.files }}
     steps:
     - name: Checkout the repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Get changed files for push
       if: github.event_name == 'push'
@@ -84,7 +84,7 @@ jobs:
 
       - name: Checkout the repository
         if: steps.check.outputs.sign == 'yes'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install SSH key for storage
         uses: shimataro/ssh-key-action@v2
