@@ -25,7 +25,7 @@ jobs:
       files: ${{ steps.changed_files.outputs.files }}
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Get changed files for push
         if: github.event_name == 'push'
@@ -49,7 +49,7 @@ jobs:
     if: ${{ github.repository_owner == 'jethub-homeassistant' }}
     steps:
       - name: Checkout jethub version repository (master)
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           repository: jethub-homeassistant/version
@@ -59,7 +59,7 @@ jobs:
 
       - name: Checkout jethub upstream version repository (master)
         if: github.event_name != 'push'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
           repository: jethub-homeassistant/version
@@ -69,7 +69,7 @@ jobs:
 
       - name: Checkout home-assistant version repository (master)
         if: github.event_name != 'push'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
           repository: home-assistant/version
