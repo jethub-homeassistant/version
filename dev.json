@@ -59,7 +59,7 @@
     "4": "4.20",
     "3": "3.13"
   },
-  "ota": "https://os-builds.jhaos.dev/{version}/{os_name}_{board}-{version}.raucb",
+  "ota": "https://os-builds.iot.jethome.ru/{version}/{os_name}_{board}-{version}.raucb",
   "cli": "2024.05.0.dev0601",
   "dns": "2024.04.0.dev0401",
   "audio": "2023.12.0.dev1203",
