@@ -64,7 +64,7 @@
   "dns": "2024.04.0.dev0401",
   "audio": "2023.12.0.dev1203",
   "multicast": "2024.03.0.dev0701",
-  "observer": "2024.06.0.dev1302",
+  "observer": "2024.06.0.dev2601",
   "image": {
     "core": "cr.jethome.work/github/jethub-homeassistant/{machine}-homeassistant",
     "supervisor": "cr.jethome.work/github/jethub-homeassistant/{arch}-hassio-supervisor",
