@@ -156,6 +156,9 @@ jobs:
         MESSAGESEND=false
         for file in ${{ needs.prepare.outputs.files }}; do
           if [[ "$file" =~ \.json ]]; then
+            if [[ "$file" == "dev.json" ]]; then
+              continue
+            fi
             JSON2=${file}
             JSON=$(mktemp).json
             rsync repo@repo.jethome.ru:/var/www/haversion.jethome.ru/"$file" ${JSON}
