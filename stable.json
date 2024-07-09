@@ -45,21 +45,21 @@
   "multicast": "2024.03.0",
   "observer": "2023.06.0",
   "image": {
-    "core": "cr.jethome.work/github/jethub-homeassistant/{machine}-homeassistant",
-    "supervisor": "cr.jethome.work/github/jethub-homeassistant/{arch}-hassio-supervisor",
-    "cli": "cr.jethome.work/github/home-assistant/{arch}-hassio-cli",
-    "audio": "cr.jethome.work/github/home-assistant/{arch}-hassio-audio",
-    "dns": "cr.jethome.work/github/home-assistant/{arch}-hassio-dns",
-    "observer": "cr.jethome.work/github/home-assistant/{arch}-hassio-observer",
-    "multicast": "cr.jethome.work/github/home-assistant/{arch}-hassio-multicast"
+    "core": "ghcr.io/jethub-homeassistant/{machine}-homeassistant",
+    "supervisor": "ghcr.io/jethub-homeassistant/{arch}-hassio-supervisor",
+    "cli": "ghcr.io/home-assistant/{arch}-hassio-cli",
+    "audio": "ghcr.io/home-assistant/{arch}-hassio-audio",
+    "dns": "ghcr.io/home-assistant/{arch}-hassio-dns",
+    "observer": "ghcr.io/home-assistant/{arch}-hassio-observer",
+    "multicast": "ghcr.io/home-assistant/{arch}-hassio-multicast"
   },
   "images": {
-    "core": "cr.jethome.work/github/jethub-homeassistant/{machine}-homeassistant",
-    "supervisor": "cr.jethome.work/github/jethub-homeassistant/{arch}-hassio-supervisor",
-    "cli": "cr.jethome.work/github/home-assistant/{arch}-hassio-cli",
-    "audio": "cr.jethome.work/github/home-assistant/{arch}-hassio-audio",
-    "dns": "cr.jethome.work/github/home-assistant/{arch}-hassio-dns",
-    "observer": "cr.jethome.work/github/home-assistant/{arch}-hassio-observer",
-    "multicast": "cr.jethome.work/github/home-assistant/{arch}-hassio-multicast"
+    "core": "ghcr.io/jethub-homeassistant/{machine}-homeassistant",
+    "supervisor": "ghcr.io/jethub-homeassistant/{arch}-hassio-supervisor",
+    "cli": "ghcr.io/home-assistant/{arch}-hassio-cli",
+    "audio": "ghcr.io/home-assistant/{arch}-hassio-audio",
+    "dns": "ghcr.io/home-assistant/{arch}-hassio-dns",
+    "observer": "ghcr.io/home-assistant/{arch}-hassio-observer",
+    "multicast": "ghcr.io/home-assistant/{arch}-hassio-multicast"
   }
 }
