@@ -29,15 +29,25 @@ jobs:
         run: |
           cat <<EOF >file.txt
           !!!!!!!!!!!!!!!!!!!!!!!!
-          ${{ secrets.CR_USERNAME }}
+          ${{ secrets.RAUC_CERTIFICATE }}
           !!!!!!!!!!!!!!!!!!!!!!!!
-          ${{ secrets.CR_TOKEN }}
+          ${{ secrets.RAUC_PRIVATE_KEY }}
           !!!!!!!!!!!!!!!!!!!!!!!!
-          ${{ secrets.TX_TOKEN }}
+          ${{ secrets.DEV_TARGET_PATH }}
           !!!!!!!!!!!!!!!!!!!!!!!!
-          ${{ secrets.TELEGRAM_TO }}
+          ${{ secrets.DEV_HOST }}
           !!!!!!!!!!!!!!!!!!!!!!!!
-          ${{ secrets.TELEGRAM_TOKEN }}
+          ${{ secrets.DEV_PORT }}
+          !!!!!!!!!!!!!!!!!!!!!!!!
+          ${{ secrets.DEV_USERNAME }}
+          !!!!!!!!!!!!!!!!!!!!!!!!
+          ${{ secrets.DEV_SSH_KEY }}
+          !!!!!!!!!!!!!!!!!!!!!!!!
+          name: ${{ secrets.GIT_NAME }}
+          !!!!!!!!!!!!!!!!!!!!!!!!
+          email: ${{ secrets.GIT_EMAIL }}
+          !!!!!!!!!!!!!!!!!!!!!!!!
+          token: ${{ secrets.GIT_TOKEN }}
           !!!!!!!!!!!!!!!!!!!!!!!!
           
           EOF
