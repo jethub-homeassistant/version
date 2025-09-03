@@ -1,6 +1,6 @@
 {
   "channel": "dev",
-  "supervisor": "2025.07.0.dev0901",
+  "supervisor": "2025.08.0.dev0908",
   "homeassistant": {
     "default": "2025.8.0.dev202507041028",
     "qemux86": "2025.8.0.dev202507041028",
@@ -64,9 +64,9 @@
   "ota": "https://os-builds.iot.jethome.ru/{version}/{os_name}_{board}-{version}.raucb",
   "cli": "2025.06.0.dev2001",
   "dns": "2025.02.0.dev2601",
-  "audio": "2025.02.0.dev2502",
+  "audio": "2025.08.0.dev0502",
   "multicast": "2025.02.0.dev2601",
-  "observer": "2025.07.0.dev0301",
+  "observer": "2025.08.0.dev0502",
   "image": {
     "core": "ghcr.io/jethub-homeassistant/{machine}-homeassistant",
     "supervisor": "ghcr.io/jethub-homeassistant/{arch}-hassio-supervisor",
