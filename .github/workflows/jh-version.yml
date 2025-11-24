@@ -28,7 +28,7 @@ jobs:
     runs-on: ${{ vars.RUNNER }}
     steps:
     - name: Checkout the repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Lint with JQ
       uses: jethub-homeassistant/actions/helpers/jq@master-jethub
@@ -42,7 +42,7 @@ jobs:
       sign_matrix: ${{ steps.calc_file_list.outputs.result }}
     steps:
     - name: Checkout the repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Get changed files for push
       if: github.event_name == 'push'
@@ -84,7 +84,7 @@ jobs:
         path: ${{ fromJson(needs.prepare.outputs.sign_matrix) }}
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install SSH key for storage
         uses: shimataro/ssh-key-action@v2
@@ -135,7 +135,7 @@ jobs:
     runs-on: ${{ vars.RUNNER }}
     steps:
     - name: Checkout the repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Install SSH key for storage
       uses: shimataro/ssh-key-action@v2
